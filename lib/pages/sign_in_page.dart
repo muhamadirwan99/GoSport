@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/sign_up_page.dart';
+import 'package:go_sport/pages/menu_page.dart';
 
 class SignInPage extends StatelessWidget {
+  static const routeName = '/signInPage';
+
   const SignInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(top: 32),
+        margin: const EdgeInsets.only(top: 32),
         child: Column(
           children: [
             Text(
               'Login',
               style: TextStyle(fontSize: 40, fontWeight: bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
           ],
@@ -25,20 +29,20 @@ class SignInPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 46),
+        margin: const EdgeInsets.only(top: 46),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Email Address',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 47,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
@@ -51,10 +55,10 @@ class SignInPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'images/ic_email.png',
+                      'assets/images/ic_email.png',
                       width: 32,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -76,25 +80,25 @@ class SignInPage extends StatelessWidget {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 36),
+        margin: const EdgeInsets.only(top: 36),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Password',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 47,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromARGB(50, 0, 0, 0),
+                  color: const Color.fromARGB(50, 0, 0, 0),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -102,10 +106,10 @@ class SignInPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'images/ic_lock.png',
+                      'assets/images/ic_lock.png',
                       width: 32,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -130,9 +134,11 @@ class SignInPage extends StatelessWidget {
       return Container(
         height: 50,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 69),
+        margin: const EdgeInsets.only(top: 69),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, MenuPage.routeName);
+          },
           style: TextButton.styleFrom(
             backgroundColor: secondaryColor,
             shape: RoundedRectangleBorder(
@@ -150,16 +156,16 @@ class SignInPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(top: 60),
+        margin: const EdgeInsets.only(top: 60),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Don\'t have an account? ',
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/sign-up');
+                Navigator.pushNamed(context, SignUpPage.routeName);
               },
               child: Text(
                 'Sign Up',

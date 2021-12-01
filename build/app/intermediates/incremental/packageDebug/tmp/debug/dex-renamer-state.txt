@@ -1,4 +1,4 @@
-#Wed Dec 01 16:17:51 ICT 2021
-base.0=E\:\\Capstone Project\\GoSport\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Dec 02 06:08:10 ICT 2021
+base.0=C\:\\Users\\kazaki\\Documents\\Dev\\android\\Flutter\\go_sport\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

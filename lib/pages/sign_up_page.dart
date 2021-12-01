@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/sign_in_page.dart';
 
 class SignUpPage extends StatelessWidget {
+  static const routeName = '/signUpPage';
+
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
@@ -26,16 +29,16 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Full Name',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 47,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
@@ -48,10 +51,10 @@ class SignUpPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'images/ic_fn.png',
+                      'assets/images/ic_fn.png',
                       width: 32,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -77,21 +80,21 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Username',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 47,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromARGB(50, 0, 0, 0),
+                  color: const Color.fromARGB(50, 0, 0, 0),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -99,10 +102,10 @@ class SignUpPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'images/ic_un.png',
+                      'assets/images/ic_un.png',
                       width: 32,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -128,16 +131,16 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Email Address',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 47,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
@@ -150,10 +153,10 @@ class SignUpPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'images/ic_email.png',
+                      'assets/images/ic_email.png',
                       width: 32,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -179,21 +182,21 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Password',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 47,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromARGB(50, 0, 0, 0),
+                  color: const Color.fromARGB(50, 0, 0, 0),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -201,10 +204,10 @@ class SignUpPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      'images/ic_lock.png',
+                      'assets/images/ic_lock.png',
                       width: 32,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
@@ -229,9 +232,11 @@ class SignUpPage extends StatelessWidget {
       return Container(
         height: 50,
         width: double.infinity,
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, SignInPage.routeName);
+          },
           style: TextButton.styleFrom(
             backgroundColor: secondaryColor,
             shape: RoundedRectangleBorder(
@@ -253,12 +258,12 @@ class SignUpPage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Already have an account? ',
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/sign-in');
+                Navigator.pushNamed(context, SignInPage.routeName);
               },
               child: Text(
                 'Sign In',
