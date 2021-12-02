@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/data/model/sport_model.dart';
 
 class CardSport extends StatelessWidget {
+  FutsalElement sport;
+
+  CardSport({required this.sport});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -25,13 +30,13 @@ class CardSport extends StatelessWidget {
             ClipRRect(
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-              child: Image.asset('assets/futsal.png'),
+              child: Image.network(sport.pictureId),
             ),
             Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 15, top: 8),
               child: Text(
-                'Jaya Futsal',
+                sport.name,
                 style: myTextTheme.headline6,
               ),
             ),
@@ -44,7 +49,7 @@ class CardSport extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(Icons.place, size: 12),
-                      Text('Cicurug, Sukabumi', style: myTextTheme.subtitle2),
+                      Text(sport.address, style: myTextTheme.subtitle2),
                     ],
                   ),
                   Row(
@@ -58,7 +63,7 @@ class CardSport extends StatelessWidget {
                       SizedBox(
                         width: 5,
                       ),
-                      Text('4.5',
+                      Text(sport.ratings.toString(),
                           style: TextStyle(
                             fontSize: 13,
                           )),

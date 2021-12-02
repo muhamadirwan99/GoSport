@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/data/model/sport_model.dart';
 import 'package:go_sport/widgets/card_sport.dart';
+import 'package:flutter/services.dart' as _rootbundle;
 
 class MenuPage extends StatelessWidget {
   static const routeName = '/menuPage';
@@ -52,10 +56,42 @@ class MenuPage extends StatelessWidget {
                 ),
               ),
             ),
-            CardSport(),
+            Expanded(
+              child: FutureBuilder(
+                future: _readJsonData(),
+                builder: (context, data) {
+                  if (data.hasError) {
+                    return Text('${data.error}');
+                  } else if (data.hasData) {
+                    var sport = data.data as List<FutsalElement>;
+                    return ListView.builder(
+                      itemCount: sport.length,
+                      itemBuilder: (context, index) {
+                        return CardSport(
+                          sport: sport[index],
+                        );
+                      },
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Future<List<FutsalElement>> _readJsonData() async {
+    final jsonData =
+        await _rootbundle.rootBundle.loadString('assets/local_sport.json');
+    final list = jsonDecode(jsonData);
+    List<dynamic> data = list["futsal"];
+
+    return data.map((json) => FutsalElement.fromJson(json)).toList();
   }
 }
