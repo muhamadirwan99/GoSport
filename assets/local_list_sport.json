@@ -1,0 +1,19 @@
+{
+    "sport": [
+      {
+        "id": 1,
+        "name": "Futsal",
+        "pictureId": "https://restaurant-api.dicoding.dev/images/medium/25"
+      },
+      {
+        "id": 2,
+        "name": "Badminton",
+        "pictureId": "https://restaurant-api.dicoding.dev/images/medium/25"
+      },
+      {
+        "id": 3,
+        "name": "Tenis",
+        "pictureId": "https://restaurant-api.dicoding.dev/images/medium/25"
+      }
+    ]
+  }
