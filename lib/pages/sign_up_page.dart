@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/home_page.dart';
+import 'package:go_sport/pages/menu_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class SignUpPage extends StatelessWidget {

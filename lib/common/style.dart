@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const Color secondaryColor = Color(0xff95fe84);
+const Color bottomNav = Color(0xff03fc35);
 double defaultMargin = 30.0;
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;

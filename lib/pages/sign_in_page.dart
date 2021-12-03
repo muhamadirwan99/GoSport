@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/home_page.dart';
 import 'package:go_sport/pages/sign_up_page.dart';
 import 'package:go_sport/pages/menu_page.dart';
 
@@ -137,7 +138,7 @@ class SignInPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: 69),
         child: TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, MenuPage.routeName);
+            Navigator.pushNamed(context, HomePage.routeName);
           },
           style: TextButton.styleFrom(
             backgroundColor: secondaryColor,
