@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_sport/pages/detail_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class SplashPage extends StatefulWidget {

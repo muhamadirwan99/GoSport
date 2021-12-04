@@ -18,7 +18,7 @@ final TextTheme myTextTheme = TextTheme(
       fontSize: 51, fontWeight: FontWeight.w300, letterSpacing: -0.5),
   headline3: GoogleFonts.montserrat(fontSize: 41, fontWeight: FontWeight.w400),
   headline4: GoogleFonts.montserrat(
-      fontSize: 29, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+      fontSize: 30, fontWeight: FontWeight.bold, letterSpacing: 0.25),
   headline5: GoogleFonts.montserrat(fontSize: 21, fontWeight: FontWeight.bold),
   headline6: GoogleFonts.montserrat(
       fontSize: 15, fontWeight: FontWeight.bold, letterSpacing: 0.15),
