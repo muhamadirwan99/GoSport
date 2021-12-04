@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 const Color secondaryColor = Color(0xff95fe84);
 const Color bottomNav = Color(0xff03fc35);
+const Color profile = Color(0xffE1E1E1);
+const Color profile2 = Color(0xffE7E7E7);
 double defaultMargin = 30.0;
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
