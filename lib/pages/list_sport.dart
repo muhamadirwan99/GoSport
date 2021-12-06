@@ -4,6 +4,7 @@ import 'package:go_sport/data/model/sport_model.dart';
 
 class ListSportPage extends StatefulWidget {
   const ListSportPage({Key? key}) : super(key: key);
+  static const routeName = '/listSportPage';
 
   @override
   State<ListSportPage> createState() => _ListSportPageState();

@@ -27,12 +27,12 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: myTextTheme,
       ),
-      initialRoute: 'splash-page',
+      initialRoute: SplashPage.routeName,
       routes: {
-        'splash-page': (context) => SplashPage(),
-        '/signInPage': (context) => SignInPage(),
-        '/signUpPage': (context) => SignUpPage(),
-        '/homePage': (context) => HomePage(),
+        SplashPage.routeName: (context) => const SplashPage(),
+        SignInPage.routeName: (context) => const SignInPage(),
+        SignUpPage.routeName: (context) => const SignUpPage(),
+        HomePage.routeName: (context) => HomePage(),
         MenuPage.routeName: (context) => MenuPage(),
       },
     );

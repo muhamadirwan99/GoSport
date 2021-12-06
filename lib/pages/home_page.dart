@@ -16,6 +16,7 @@ List<Widget> widgetOptions = [
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
+  static const routeName = '/homePage';
 
   @override
   _HomePageState createState() => _HomePageState();

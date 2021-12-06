@@ -3,6 +3,7 @@ import 'package:go_sport/common/style.dart';
 import 'package:go_sport/pages/detail_page.dart';
 import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
+import 'package:go_sport/pages/splash_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -90,8 +91,8 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      new MaterialPageRoute(
-                        builder: (context) => new EditProfilePage(),
+                      MaterialPageRoute(
+                        builder: (context) => EditProfilePage(),
                       ),
                     );
                   },
