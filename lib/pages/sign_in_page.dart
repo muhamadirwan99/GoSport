@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/home_page.dart';
+import 'package:go_sport/pages/sign_up_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
+  static const routeName = '/signInPage';
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +136,7 @@ class SignInPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: 69),
         child: TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/homePage');
+            Navigator.pushNamed(context, HomePage.routeName);
           },
           style: TextButton.styleFrom(
             backgroundColor: secondaryColor,
@@ -161,7 +164,7 @@ class SignInPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/signUpPage');
+                Navigator.pushNamed(context, SignUpPage.routeName);
               },
               child: Text(
                 'Sign Up',

@@ -5,6 +5,7 @@ import 'package:go_sport/pages/sign_in_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
+  static const routeName = '/';
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -15,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/signInPage'),
+      () => Navigator.pushNamed(context, SignInPage.routeName),
     );
     super.initState();
   }
