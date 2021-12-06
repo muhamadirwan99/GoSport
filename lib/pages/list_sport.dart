@@ -63,7 +63,7 @@ class _ListSportPageState extends State<ListSportPage> {
 
   Widget BadmintonItem() {
     return Card(
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 20),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
@@ -89,7 +89,7 @@ class _ListSportPageState extends State<ListSportPage> {
 
   Widget BasketItem() {
     return Card(
-      margin: EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(top: 20),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
