@@ -37,6 +37,7 @@ class _ListSportPageState extends State<ListSportPage> {
 
   Widget FutsalItem() {
     return Card(
+      margin: EdgeInsets.only(top: 10),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
