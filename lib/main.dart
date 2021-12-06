@@ -26,13 +26,13 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: myTextTheme,
       ),
-      initialRoute: SplashPage.routeName,
+      initialRoute: 'splash-page',
       routes: {
-        SplashPage.routeName: (context) => const SplashPage(),
-        SignInPage.routeName: (context) => const SignInPage(),
-        SignUpPage.routeName: (context) => const SignUpPage(),
+        'splash-page': (context) => SplashPage(),
+        '/signInPage': (context) => SignInPage(),
+        '/signUpPage': (context) => SignUpPage(),
+        '/homePage': (context) => HomePage(),
         MenuPage.routeName: (context) => MenuPage(),
-        HomePage.routeName: (context) => HomePage(),
       },
     );
   }

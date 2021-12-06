@@ -1,12 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_sport/pages/detail_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class SplashPage extends StatefulWidget {
-  static const routeName = '/';
-
   const SplashPage({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +15,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Timer(
       Duration(seconds: 3),
-      () => Navigator.pushNamed(context, SignInPage.routeName),
+      () => Navigator.pushNamed(context, '/signInPage'),
     );
     super.initState();
   }

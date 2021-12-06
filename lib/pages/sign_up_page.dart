@@ -5,8 +5,6 @@ import 'package:go_sport/pages/menu_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class SignUpPage extends StatelessWidget {
-  static const routeName = '/signUpPage';
-
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
@@ -237,7 +235,7 @@ class SignUpPage extends StatelessWidget {
         margin: const EdgeInsets.only(top: 30),
         child: TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, SignInPage.routeName);
+            Navigator.pushNamed(context, '/signInPage');
           },
           style: TextButton.styleFrom(
             backgroundColor: secondaryColor,
@@ -265,7 +263,7 @@ class SignUpPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, SignInPage.routeName);
+                Navigator.pushNamed(context, '/signInPage');
               },
               child: Text(
                 'Sign In',

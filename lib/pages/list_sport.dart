@@ -15,43 +15,27 @@ class _ListSportPageState extends State<ListSportPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Stack(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Text(
+            'GoSport',
+            style:
+                TextStyle(fontSize: 25, fontWeight: bold, color: Colors.black),
+          ),
+        ),
+        body: ListView(
           children: [
-            Container(
-              margin: EdgeInsets.all(20),
-              height: 600,
-              decoration: BoxDecoration(
-                color: secondaryColor,
-                borderRadius: BorderRadius.circular(40),
-              ),
-            ),
-            FutureBuilder<String>(
-              future: DefaultAssetBundle.of(context)
-                  .loadString("assets/local_sport.json"),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState != ConnectionState.done) {
-                  return CircularProgressIndicator();
-                }
-                if (!snapshot.hasData) {
-                  return Text('Gagal mengambil data');
-                }
-                final List<FutsalElement> futsal =
-                    futsalFromJson(snapshot.data.toString()).futsal;
-                return ListView.builder(
-                  itemCount: futsal.length,
-                  itemBuilder: (context, index) {
-                    return _buildFutsalItem(futsal[index], context);
-                  },
-                );
-              },
-            )
+            FutsalItem(),
+            BadmintonItem(),
+            BasketItem(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildFutsalItem(FutsalElement futsal, BuildContext context) {
+  Widget FutsalItem() {
     return Card(
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
@@ -61,13 +45,65 @@ class _ListSportPageState extends State<ListSportPage> {
         alignment: Alignment.center,
         children: <Widget>[
           InkWell(
-            child: Image.network(
-              futsal.pictureId,
+            child: Image.asset(
+              'assets/images/futsal.png',
             ),
             onTap: () {},
           ),
           Text(
-            futsal.name,
+            'Futsal',
+            style:
+                TextStyle(fontWeight: bold, color: Colors.white, fontSize: 36),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget BadmintonItem() {
+    return Card(
+      margin: EdgeInsets.only(top: 30),
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          InkWell(
+            child: Image.asset(
+              'assets/images/badminton.png',
+            ),
+            onTap: () {},
+          ),
+          Text(
+            'Badminton',
+            style:
+                TextStyle(fontWeight: bold, color: Colors.white, fontSize: 36),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget BasketItem() {
+    return Card(
+      margin: EdgeInsets.only(top: 30),
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          InkWell(
+            child: Image.asset(
+              'assets/images/basket.png',
+            ),
+            onTap: () {},
+          ),
+          Text(
+            'Basket',
             style:
                 TextStyle(fontWeight: bold, color: Colors.white, fontSize: 36),
           ),
