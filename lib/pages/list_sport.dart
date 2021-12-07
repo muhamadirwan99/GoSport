@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/menu_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ListSportPage extends StatefulWidget {
@@ -69,27 +70,32 @@ class _ListSportPageState extends State<ListSportPage> {
   }
 
   Widget futsalItem() {
-    return Card(
-      margin: const EdgeInsets.only(top: 10),
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          InkWell(
-            child: Image.asset(
-              'assets/images/futsal.png',
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, MenuPage.routeName);
+      },
+      child: Card(
+        margin: const EdgeInsets.only(top: 10),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            InkWell(
+              child: Image.asset(
+                'assets/images/futsal.png',
+              ),
+              onTap: () {},
             ),
-            onTap: () {},
-          ),
-          Text(
-            'Futsal',
-            style:
-                TextStyle(fontWeight: bold, color: Colors.white, fontSize: 36),
-          ),
-        ],
+            Text(
+              'Futsal',
+              style: TextStyle(
+                  fontWeight: bold, color: Colors.white, fontSize: 36),
+            ),
+          ],
+        ),
       ),
     );
   }

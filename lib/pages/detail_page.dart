@@ -204,7 +204,7 @@ class DetailPage extends StatelessWidget {
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       style: ElevatedButton.styleFrom(primary: secondaryColor),
