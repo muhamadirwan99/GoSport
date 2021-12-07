@@ -49,10 +49,7 @@ class SignUpPage extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/ic_fn.png',
-                      width: 32,
-                    ),
+                    const Icon(Icons.person, color: secondaryColor, size: 32),
                     const SizedBox(
                       width: 16,
                     ),
@@ -100,10 +97,8 @@ class SignUpPage extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/ic_un.png',
-                      width: 32,
-                    ),
+                    const Icon(Icons.person_pin,
+                        color: secondaryColor, size: 32),
                     const SizedBox(
                       width: 16,
                     ),
@@ -151,10 +146,7 @@ class SignUpPage extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/ic_email.png',
-                      width: 32,
-                    ),
+                    const Icon(Icons.email, color: secondaryColor, size: 32),
                     const SizedBox(
                       width: 16,
                     ),
@@ -202,10 +194,7 @@ class SignUpPage extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/ic_lock.png',
-                      width: 32,
-                    ),
+                    const Icon(Icons.lock, color: secondaryColor, size: 32),
                     const SizedBox(
                       width: 16,
                     ),
@@ -245,7 +234,7 @@ class SignUpPage extends StatelessWidget {
           child: Text(
             'Sign Up',
             style: TextStyle(
-                fontSize: 16, color: Colors.black, fontWeight: medium),
+                fontSize: 16, color: Colors.white, fontWeight: medium),
           ),
         ),
       );
