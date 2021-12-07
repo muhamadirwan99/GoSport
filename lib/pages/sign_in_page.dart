@@ -53,10 +53,7 @@ class SignInPage extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/ic_email.png',
-                      width: 32,
-                    ),
+                    const Icon(Icons.email, color: secondaryColor, size: 32),
                     const SizedBox(
                       width: 16,
                     ),
@@ -104,10 +101,7 @@ class SignInPage extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/images/ic_lock.png',
-                      width: 32,
-                    ),
+                    const Icon(Icons.lock, color: secondaryColor, size: 32),
                     const SizedBox(
                       width: 16,
                     ),
@@ -147,7 +141,7 @@ class SignInPage extends StatelessWidget {
           child: Text(
             'Sign In',
             style: TextStyle(
-                fontSize: 16, color: Colors.black, fontWeight: medium),
+                fontSize: 16, color: Colors.white, fontWeight: medium),
           ),
         ),
       );
