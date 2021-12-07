@@ -25,42 +25,39 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: widgetOptions.elementAt(indexBottomNav),
-        bottomNavigationBar: SalomonBottomBar(
-          onTap: (index) {
-            setState(
-              () {
-                indexBottomNav = index;
-              },
-            );
-          },
-          currentIndex: indexBottomNav,
-          items: [
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.home),
-              title: const Text('Home'),
-              selectedColor: bottomNav,
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.list_rounded),
-              title: const Text('Order'),
-              selectedColor: bottomNav,
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.favorite_border_rounded),
-              title: const Text('Favorite'),
-              selectedColor: bottomNav,
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.account_circle_rounded),
-              title: const Text('Profile'),
-              selectedColor: bottomNav,
-            ),
-          ],
-        ),
+    return Scaffold(
+      body: widgetOptions.elementAt(indexBottomNav),
+      bottomNavigationBar: SalomonBottomBar(
+        onTap: (index) {
+          setState(
+            () {
+              indexBottomNav = index;
+            },
+          );
+        },
+        currentIndex: indexBottomNav,
+        items: [
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.home),
+            title: const Text('Home'),
+            selectedColor: bottomNav,
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.list_rounded),
+            title: const Text('Order'),
+            selectedColor: bottomNav,
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.favorite_border_rounded),
+            title: const Text('Favorite'),
+            selectedColor: bottomNav,
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.account_circle_rounded),
+            title: const Text('Profile'),
+            selectedColor: bottomNav,
+          ),
+        ],
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListSportPage extends StatefulWidget {
   const ListSportPage({Key? key}) : super(key: key);
@@ -12,24 +13,56 @@ class ListSportPage extends StatefulWidget {
 class _ListSportPageState extends State<ListSportPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Text(
-            'GoSport',
-            style:
-                TextStyle(fontSize: 25, fontWeight: bold, color: Colors.black),
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(22.0),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 0,
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'GoSport',
+                        style: GoogleFonts.montserrat(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Please order below',
+                        style: GoogleFonts.montserrat(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    futsalItem(),
+                    badmintonItem(),
+                    basketItem(),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ),
-        body: ListView(
-          children: [
-            futsalItem(),
-            badmintonItem(),
-            basketItem(),
-          ],
         ),
       ),
     );
