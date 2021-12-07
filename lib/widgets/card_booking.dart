@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/data/model/sport_model.dart';
-import 'package:go_sport/pages/detail_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class CardBooking extends StatelessWidget {
-  CardBooking({Key? key}) : super(key: key);
+  const CardBooking({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

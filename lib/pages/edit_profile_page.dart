@@ -16,12 +16,12 @@ class EditProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Name',
               style: TextStyle(fontSize: 15),
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Dista',
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
@@ -42,12 +42,12 @@ class EditProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Username',
               style: TextStyle(fontSize: 15),
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: '@Dstaa',
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -69,12 +69,12 @@ class EditProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Email Address',
               style: TextStyle(fontSize: 15),
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'Dista5@gmail.com',
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
@@ -99,7 +99,7 @@ class EditProfilePage extends StatelessWidget {
             Container(
               width: 110,
               height: 110,
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
