@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
 
 class EditProfilePage extends StatelessWidget {
+  static const routeName = '/editProfilPage';
+
   const EditProfilePage({Key? key}) : super(key: key);
 
   @override

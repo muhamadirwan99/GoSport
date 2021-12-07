@@ -34,8 +34,9 @@ class MyApp extends StatelessWidget {
         SplashPage.routeName: (context) => const SplashPage(),
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
-        HomePage.routeName: (context) => HomePage(),
+        HomePage.routeName: (context) => const HomePage(),
         MenuPage.routeName: (context) => MenuPage(),
+        EditProfilePage.routeName: (context) => const EditProfilePage(),
       },
     );
   }
