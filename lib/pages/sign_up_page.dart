@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/pages/home_page.dart';
-import 'package:go_sport/pages/menu_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -12,7 +10,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(top: 32),
+        margin: const EdgeInsets.only(top: 32),
         child: Column(
           children: [
             Text(
@@ -26,7 +24,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget nameInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -44,7 +42,7 @@ class SignUpPage extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromARGB(50, 0, 0, 0),
+                  color: const Color.fromARGB(50, 0, 0, 0),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -77,7 +75,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget userInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -128,7 +126,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -146,7 +144,7 @@ class SignUpPage extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromARGB(50, 0, 0, 0),
+                  color: const Color.fromARGB(50, 0, 0, 0),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -179,7 +177,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget passwordInput() {
       return Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -255,7 +253,7 @@ class SignUpPage extends StatelessWidget {
 
     Widget footer() {
       return Container(
-        margin: EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

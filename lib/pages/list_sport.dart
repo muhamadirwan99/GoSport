@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/data/model/sport_model.dart';
 
 class ListSportPage extends StatefulWidget {
   const ListSportPage({Key? key}) : super(key: key);
@@ -27,18 +26,18 @@ class _ListSportPageState extends State<ListSportPage> {
         ),
         body: ListView(
           children: [
-            FutsalItem(),
-            BadmintonItem(),
-            BasketItem(),
+            futsalItem(),
+            badmintonItem(),
+            basketItem(),
           ],
         ),
       ),
     );
   }
 
-  Widget FutsalItem() {
+  Widget futsalItem() {
     return Card(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
@@ -62,9 +61,9 @@ class _ListSportPageState extends State<ListSportPage> {
     );
   }
 
-  Widget BadmintonItem() {
+  Widget badmintonItem() {
     return Card(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
@@ -88,9 +87,9 @@ class _ListSportPageState extends State<ListSportPage> {
     );
   }
 
-  Widget BasketItem() {
+  Widget basketItem() {
     return Card(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),

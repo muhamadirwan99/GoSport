@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 class DetailPage extends StatelessWidget {
   static const routeName = '/detailPage';
 
+  const DetailPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +36,7 @@ class DetailPage extends StatelessWidget {
                   radius: 30,
                   backgroundColor: Colors.white,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.black),
+                    icon: const Icon(Icons.arrow_back, color: Colors.black),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ),
@@ -64,7 +66,7 @@ class DetailPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(Icons.place, size: 20),
+                        const Icon(Icons.place, size: 20),
                         Text('Cicurug, Sukabumi',
                             style: GoogleFonts.montserrat(
                                 fontSize: 20, fontWeight: FontWeight.w300)),

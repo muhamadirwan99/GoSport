@@ -4,10 +4,11 @@ import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/sport_model.dart';
 import 'package:go_sport/pages/detail_page.dart';
 
+// ignore: must_be_immutable
 class CardSport extends StatelessWidget {
   FutsalElement sport;
 
-  CardSport({required this.sport});
+  CardSport({Key? key, required this.sport}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,23 +58,23 @@ class CardSport extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(Icons.place, size: 12),
+                        const Icon(Icons.place, size: 12),
                         Text(sport.address, style: myTextTheme.subtitle2),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star,
                           size: 20,
                           color: Colors.yellow,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(sport.ratings.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 13,
                             )),
                       ],

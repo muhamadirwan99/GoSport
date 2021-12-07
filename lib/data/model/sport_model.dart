@@ -53,13 +53,13 @@ class FutsalElement {
         name: json["name"],
         address: json["address"],
         ratings: json["ratings"].toDouble(),
-        openTime: json["openTime"] == null ? null : json["openTime"],
-        openDay: json["openDay"] == null ? null : json["openDay"],
+        openTime: json["openTime"],
+        openDay: json["openDay"],
         detail: json["detail"],
         price: json["price"],
         pictureId: json["pictureId"],
-        opentime: json["opentime"] == null ? null : json["opentime"],
-        openday: json["openday"] == null ? null : json["openday"],
+        opentime: json["opentime"],
+        openday: json["openday"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,12 +67,12 @@ class FutsalElement {
         "name": name,
         "address": address,
         "ratings": ratings,
-        "openTime": openTime == null ? null : openTime,
-        "openDay": openDay == null ? null : openDay,
+        "openTime": openTime,
+        "openDay": openDay,
         "detail": detail,
         "price": price,
         "pictureId": pictureId,
-        "opentime": opentime == null ? null : opentime,
-        "openday": openday == null ? null : openday,
+        "opentime": opentime,
+        "openday": openday,
       };
 }

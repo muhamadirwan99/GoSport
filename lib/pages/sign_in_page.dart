@@ -46,7 +46,7 @@ class SignInPage extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color.fromARGB(50, 0, 0, 0),
+                  color: const Color.fromARGB(50, 0, 0, 0),
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),

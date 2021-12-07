@@ -10,6 +10,8 @@ class MenuPage extends StatelessWidget {
   static const routeName = '/menuPage';
   final _searchController = TextEditingController();
 
+  MenuPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +23,10 @@ class MenuPage extends StatelessWidget {
             style: myTextTheme.headline5,
           ),
         ),
-        titleTextStyle: TextStyle(color: Colors.black),
+        titleTextStyle: const TextStyle(color: Colors.black),
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },

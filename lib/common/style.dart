@@ -11,7 +11,7 @@ FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.bold;
-TextStyle blur = TextStyle(color: Color.fromARGB(80, 0, 0, 0));
+TextStyle blur = const TextStyle(color: Color.fromARGB(80, 0, 0, 0));
 
 final TextTheme myTextTheme = TextTheme(
   headline1: GoogleFonts.montserrat(

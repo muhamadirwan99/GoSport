@@ -8,14 +8,14 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 var indexBottomNav = 0;
 List<Widget> widgetOptions = [
-  ListSportPage(),
-  OrderPage(),
-  FavoritePage(),
-  ProfilePage()
+  const ListSportPage(),
+  const OrderPage(),
+  const FavoritePage(),
+  const ProfilePage()
 ];
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   static const routeName = '/homePage';
 
   @override
@@ -40,23 +40,23 @@ class _HomePageState extends State<HomePage> {
           currentIndex: indexBottomNav,
           items: [
             SalomonBottomBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
+              icon: const Icon(Icons.home),
+              title: const Text('Home'),
               selectedColor: bottomNav,
             ),
             SalomonBottomBarItem(
-              icon: Icon(Icons.list_rounded),
-              title: Text('Order'),
+              icon: const Icon(Icons.list_rounded),
+              title: const Text('Order'),
               selectedColor: bottomNav,
             ),
             SalomonBottomBarItem(
-              icon: Icon(Icons.favorite_border_rounded),
-              title: Text('Favorite'),
+              icon: const Icon(Icons.favorite_border_rounded),
+              title: const Text('Favorite'),
               selectedColor: bottomNav,
             ),
             SalomonBottomBarItem(
-              icon: Icon(Icons.account_circle_rounded),
-              title: Text('Profile'),
+              icon: const Icon(Icons.account_circle_rounded),
+              title: const Text('Profile'),
               selectedColor: bottomNav,
             ),
           ],

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/pages/detail_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
-import 'package:go_sport/pages/splash_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -25,7 +23,7 @@ class ProfilePage extends StatelessWidget {
                     width: 64,
                   ),
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +32,7 @@ class ProfilePage extends StatelessWidget {
                         'Hallo Dista',
                         style: TextStyle(fontSize: 28, fontWeight: semiBold),
                       ),
-                      Text(
+                      const Text(
                         '@Dstaa',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w300),
@@ -49,20 +47,20 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    Widget MenuItem(String text) {
+    Widget menuItem(String text) {
       return Container(
-        margin: EdgeInsets.only(top: 16),
+        margin: const EdgeInsets.only(top: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15,
                 color: Colors.black,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.chevron_right,
               color: Colors.black,
             )
@@ -79,7 +77,7 @@ class ProfilePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
@@ -90,9 +88,9 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, SignInPage.routeName);
                   },
-                  child: MenuItem('Edit Profile')),
-              MenuItem('Your Orders'),
-              MenuItem('Help'),
+                  child: menuItem('Edit Profile')),
+              menuItem('Your Orders'),
+              menuItem('Help'),
               SizedBox(
                 height: defaultMargin,
               ),
@@ -100,14 +98,14 @@ class ProfilePage extends StatelessWidget {
                 'General',
                 style: TextStyle(fontWeight: bold, fontSize: 20),
               ),
-              MenuItem('Privacy & Policy'),
-              MenuItem('Term of Service'),
-              MenuItem('Rate App'),
+              menuItem('Privacy & Policy'),
+              menuItem('Term of Service'),
+              menuItem('Rate App'),
               Center(
                 child: Container(
                   height: 50,
                   width: 300,
-                  margin: EdgeInsets.only(top: 50),
+                  margin: const EdgeInsets.only(top: 50),
                   child: TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
