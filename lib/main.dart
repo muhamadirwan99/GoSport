@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/home_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/sign_up_page.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         SplashPage.routeName: (context) => const SplashPage(),
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
-        HomePage.routeName: (context) => const HomePage(),
+        HomePage.routeName: (context) => HomePage(),
         MenuPage.routeName: (context) => MenuPage(),
       },
     );

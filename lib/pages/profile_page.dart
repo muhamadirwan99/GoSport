@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/pages/detail_page.dart';
+import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -86,7 +88,12 @@ class ProfilePage extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, SignInPage.routeName);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfilePage(),
+                      ),
+                    );
                   },
                   child: menuItem('Edit Profile')),
               menuItem('Your Orders'),
@@ -105,7 +112,7 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   height: 50,
                   width: 300,
-                  margin: const EdgeInsets.only(top: 50),
+                  margin: EdgeInsets.only(top: 30),
                   child: TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
@@ -130,11 +137,14 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    return Column(
-      children: [
-        header(),
-        content(),
-      ],
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Column(
+        children: [
+          header(),
+          content(),
+        ],
+      ),
     );
   }
 }
