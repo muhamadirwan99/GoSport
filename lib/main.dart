@@ -8,6 +8,7 @@ import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/sign_up_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
 import 'package:go_sport/pages/menu_page.dart';
+import 'package:go_sport/pages/term_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         DetailPage.routeName: (context) => const DetailPage(),
         EditProfilePage.routeName: (context) => const EditProfilePage(),
         PolicyPage.routeName: (context) => const PolicyPage(),
+        TermsPage.routeName: (context) => const TermsPage(),
       },
     );
   }

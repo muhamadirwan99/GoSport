@@ -3,6 +3,7 @@ import 'package:go_sport/common/style.dart';
 import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
+import 'package:go_sport/pages/term_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -105,7 +106,11 @@ class ProfilePage extends StatelessWidget {
                     Navigator.pushNamed(context, PolicyPage.routeName);
                   },
                   child: menuItem('Privacy & Policy')),
-              menuItem('Term of Service'),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, TermsPage.routeName);
+                  },
+                  child: menuItem('Terms & Conditions')),
               Center(
                 child: Container(
                   height: 50,
