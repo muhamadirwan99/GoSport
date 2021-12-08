@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/pages/detail_page.dart';
 import 'package:go_sport/pages/edit_profile_page.dart';
-import 'package:go_sport/pages/sign_in_page.dart';
+import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -101,14 +100,17 @@ class ProfilePage extends StatelessWidget {
                 'General',
                 style: TextStyle(fontWeight: bold, fontSize: 20),
               ),
-              menuItem('Privacy & Policy'),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, PolicyPage.routeName);
+                  },
+                  child: menuItem('Privacy & Policy')),
               menuItem('Term of Service'),
-              menuItem('Rate App'),
               Center(
                 child: Container(
                   height: 50,
                   width: 300,
-                  margin: EdgeInsets.only(top: 30),
+                  margin: const EdgeInsets.only(top: 30),
                   child: TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, SplashPage.routeName);

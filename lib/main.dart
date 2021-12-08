@@ -3,6 +3,7 @@ import 'package:go_sport/common/style.dart';
 import 'package:go_sport/pages/detail_page.dart';
 import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/home_page.dart';
+import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/sign_up_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         MenuPage.routeName: (context) => MenuPage(),
         DetailPage.routeName: (context) => const DetailPage(),
         EditProfilePage.routeName: (context) => const EditProfilePage(),
+        PolicyPage.routeName: (context) => const PolicyPage(),
       },
     );
   }
