@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   static const routeName = '/detailPage';
 
-  const DetailPage({Key? key}) : super(key: key);
+  DetailPage({Key? key}) : super(key: key);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  DateTime selectDate = DateTime.now();
+  String dateFormat = "";
+
+  @override
+  void initState() {
+    dateFormat = DateFormat("dd-MM-yyy").format(selectDate);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +70,7 @@ class DetailPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 14),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Jaya Futsal',
+                        "Jaya Futsal",
                         style: myTextTheme.headline4,
                       ),
                     ),
@@ -197,7 +211,20 @@ class DetailPage extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDatePicker(
+                          context: context,
+                          initialDate: selectDate,
+                          firstDate: selectDate,
+                          lastDate: DateTime(2100),
+                        ).then((value) {
+                          if (value != null) {
+                            setState(() {
+                              selectDate = value;
+                            });
+                          }
+                        });
+                      },
                       child: Text(
                         'Book Now',
                         textAlign: TextAlign.center,
