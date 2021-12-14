@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.example.go_sport",
+  "applicationId": "com.gosport.go_sport",
   "variantName": "debug",
   "elements": []
 }

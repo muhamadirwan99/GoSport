@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.go_sport",
+  "applicationId": "com.gosport.go_sport",
   "variantName": "processDebugResources",
   "elements": [
     {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "28119807396",
+    "project_id": "gosport-134f8",
+    "storage_bucket": "gosport-134f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28119807396:android:befe26c69b1785287cfd31",
+        "android_client_info": {
+          "package_name": "com.gosport.go_sport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28119807396-66iar63gnjmmd8j7p485qlhbsjfouct4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOZFS_9HD2x6kBitg725YpWnYB-fv_DKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28119807396-66iar63gnjmmd8j7p485qlhbsjfouct4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
