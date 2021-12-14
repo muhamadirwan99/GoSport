@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/data/model/sport_model.dart';
-import 'package:go_sport/pages/detail_page.dart';
 
 // ignore: must_be_immutable
 class CardFavorite extends StatelessWidget {
-  CardFavorite({Key? key}) : super(key: key);
+  const CardFavorite({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

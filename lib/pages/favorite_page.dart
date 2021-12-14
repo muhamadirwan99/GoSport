@@ -31,7 +31,7 @@ class FavoritePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 18, right: 18),
           child: Column(
-            children: [
+            children: const [
               CardFavorite(),
               CardFavorite(),
               CardFavorite(),

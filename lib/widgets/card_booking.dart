@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class CardBooking extends StatelessWidget {
-  CardBooking({Key? key}) : super(key: key);
+  const CardBooking({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
