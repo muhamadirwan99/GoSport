@@ -1,24 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/data/model/sport_model.dart';
 import 'package:go_sport/pages/detail_page.dart';
 
 // ignore: must_be_immutable
 class CardSport extends StatelessWidget {
-  FutsalElement sport;
+  Map<String, dynamic> field;
+  String id = "";
 
-  CardSport({Key? key, required this.sport}) : super(key: key);
+  CardSport({Key? key, required this.field, required this.id})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(
-            context,
-            DetailPage.routeName,
-          );
+          Navigator.pushNamed(context, DetailPage.routeName, arguments: id);
         },
         child: Container(
           margin: const EdgeInsets.only(top: 13),
@@ -40,13 +38,13 @@ class CardSport extends StatelessWidget {
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16)),
-                child: Image.network(sport.pictureId),
+                child: Image.network(field["images"]),
               ),
               Container(
                 alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.only(left: 15, top: 8),
                 child: Text(
-                  sport.name,
+                  field["name"],
                   style: myTextTheme.headline6,
                 ),
               ),
@@ -59,7 +57,7 @@ class CardSport extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const Icon(Icons.place, size: 12),
-                        Text(sport.address, style: myTextTheme.subtitle2),
+                        Text(field["place"], style: myTextTheme.subtitle2),
                       ],
                     ),
                     Row(
@@ -73,7 +71,7 @@ class CardSport extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        Text(sport.ratings.toString(),
+                        Text(field["ratings"].toString(),
                             style: const TextStyle(
                               fontSize: 13,
                             )),

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/data/model/field_model.dart';
 import 'package:go_sport/data/model/sport_model.dart';
 import 'package:go_sport/widgets/card_sport.dart';
 import 'package:flutter/services.dart' as _rootbundle;
@@ -11,6 +13,8 @@ class MenuPage extends StatelessWidget {
   final _searchController = TextEditingController();
 
   MenuPage({Key? key}) : super(key: key);
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -73,26 +77,24 @@ class MenuPage extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: FutureBuilder(
-                future: _readJsonData(),
-                builder: (context, data) {
-                  if (data.hasError) {
-                    return Text('${data.error}');
-                  } else if (data.hasData) {
-                    var sport = data.data as List<FutsalElement>;
+              child: StreamBuilder<QuerySnapshot<Object?>>(
+                stream: streamData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.active) {
+                    var field = snapshot.data!.docs;
                     return ListView.builder(
-                      itemCount: sport.length,
+                      itemCount: field.length,
                       itemBuilder: (context, index) {
                         return CardSport(
-                          sport: sport[index],
+                          id: field[index].id,
+                          field: (field[index].data() as Map<String, dynamic>),
                         );
                       },
                     );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
                   }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 },
               ),
             ),
@@ -109,5 +111,10 @@ class MenuPage extends StatelessWidget {
     List<dynamic> data = list["futsal"];
 
     return data.map((json) => FutsalElement.fromJson(json)).toList();
+  }
+
+  Stream<QuerySnapshot<Object?>> streamData() {
+    CollectionReference field = firestore.collection("futsal");
+    return field.snapshots();
   }
 }

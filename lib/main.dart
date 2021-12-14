@@ -42,7 +42,8 @@ class MyApp extends StatelessWidget {
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomePage.routeName: (context) => const HomePage(),
         MenuPage.routeName: (context) => MenuPage(),
-        DetailPage.routeName: (context) => DetailPage(),
+        DetailPage.routeName: (context) => DetailPage(
+            id: ModalRoute.of(context)?.settings.arguments as String),
         EditProfilePage.routeName: (context) => const EditProfilePage(),
         PolicyPage.routeName: (context) => const PolicyPage(),
         TermsPage.routeName: (context) => const TermsPage(),
