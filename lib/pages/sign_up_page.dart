@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/user_model.dart';
-import 'package:go_sport/pages/home_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -25,10 +24,10 @@ class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
 
   // editing controller
-  final fullnameEditingController = new TextEditingController();
-  final usernameEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
+  final fullnameEditingController = TextEditingController();
+  final usernameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +85,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: blur,
                         ),
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{3,}$');
+                          RegExp regex = RegExp(r'^.{3,}$');
                           if (value!.isEmpty) {
                             return "FullName cannot be empty";
                           }
@@ -150,7 +149,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: blur,
                         ),
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{3,}$');
                           if (value!.isEmpty) {
                             return "Username cannot be empty";
                           }
@@ -274,7 +272,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           hintStyle: blur,
                         ),
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{6,}$');
+                          RegExp regex = RegExp(r'^.{6,}$');
                           if (value!.isEmpty) {
                             return "Password is required for login";
                           }
@@ -402,7 +400,6 @@ class _SignUpPageState extends State<SignUpPage> {
             errorMessage = "An undefined Error happened.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
-        print(error.code);
       }
     }
   }
