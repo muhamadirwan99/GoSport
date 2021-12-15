@@ -18,8 +18,8 @@ class _SignInPageState extends State<SignInPage> {
   final _formkey = GlobalKey<FormState>();
 
   //editing controller
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   //firebase
   final _auth = FirebaseAuth.instance;
@@ -147,7 +147,7 @@ class _SignInPageState extends State<SignInPage> {
                           hintStyle: blur,
                         ),
                         validator: (value) {
-                          RegExp regex = new RegExp(r'^.{6,}$');
+                          RegExp regex = RegExp(r'^.{6,}$');
                           if (value!.isEmpty) {
                             return "Password is required for login";
                           }
