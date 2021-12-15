@@ -6,7 +6,6 @@ import 'package:go_sport/data/model/user_model.dart';
 import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
-import 'package:go_sport/pages/splash_page.dart';
 import 'package:go_sport/pages/term_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -18,6 +17,8 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   User? user = FirebaseAuth.instance.currentUser;
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   UserModel loggedInUser = UserModel();
 
   @override
@@ -27,48 +28,59 @@ class _ProfilePageState extends State<ProfilePage> {
         .collection("users")
         .doc(user!.uid)
         .get()
-        .then((value) => {this.loggedInUser = UserModel.fromMap(value.data())});
+        .then((value) => {loggedInUser = UserModel.fromMap(value.data())});
   }
 
   @override
   Widget build(BuildContext context) {
     Widget header() {
-      return AppBar(
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        flexibleSpace: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(defaultMargin),
-            child: Row(
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    'assets/images/profile.png',
-                    width: 64,
-                  ),
-                ),
-                const SizedBox(width: 15),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+      return StreamBuilder<User?>(
+        stream: streamAuthStatus(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            return AppBar(
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              elevation: 0,
+              flexibleSpace: SafeArea(
+                child: Container(
+                  padding: EdgeInsets.all(defaultMargin),
+                  child: Row(
                     children: [
-                      Text(
-                        '${loggedInUser.fullname}',
-                        style: TextStyle(fontSize: 20, fontWeight: semiBold),
+                      ClipOval(
+                        child: Image.asset(
+                          'assets/images/profile.png',
+                          width: 64,
+                        ),
                       ),
-                      Text(
-                        '@${loggedInUser.username}',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w300),
-                      )
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${loggedInUser.fullname}',
+                              style:
+                                  TextStyle(fontSize: 20, fontWeight: semiBold),
+                            ),
+                            Text(
+                              '@${loggedInUser.username}',
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w300),
+                            )
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       );
     }
 
@@ -177,7 +189,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => SignInPage()));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const SignInPage()));
+  }
+
+  Stream<User?> streamAuthStatus() {
+    return auth.authStateChanges();
   }
 }

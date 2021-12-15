@@ -10,7 +10,6 @@ import 'package:go_sport/pages/sign_up_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
 import 'package:go_sport/pages/menu_page.dart';
 import 'package:go_sport/pages/term_page.dart';
-import 'package:go_sport/utils/detail_arguments.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

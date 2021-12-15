@@ -5,7 +5,6 @@ import 'package:go_sport/widgets/card_sport.dart';
 
 class MenuPage extends StatelessWidget {
   static const routeName = '/menuPage';
-  final _searchController = TextEditingController();
   String sportName = '';
 
   MenuPage({Key? key, required this.sportName}) : super(key: key);
