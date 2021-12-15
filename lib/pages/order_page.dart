@@ -18,12 +18,6 @@ class OrderPage extends StatelessWidget {
         ),
         titleTextStyle: const TextStyle(color: Colors.black),
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.white,

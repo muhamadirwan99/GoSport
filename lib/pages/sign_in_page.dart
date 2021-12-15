@@ -247,7 +247,8 @@ class _SignInPageState extends State<SignInPage> {
           .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
                 Fluttertoast.showToast(msg: "Login Successfull"),
-                Navigator.pushNamed(context, HomePage.routeName),
+                Navigator.pushNamedAndRemoveUntil(
+                    context, HomePage.routeName, (route) => false),
               })
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);

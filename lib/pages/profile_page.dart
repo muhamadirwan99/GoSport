@@ -1,12 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/data/model/user_model.dart';
 import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/pp_page.dart';
+import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
 import 'package:go_sport/pages/term_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) => {this.loggedInUser = UserModel.fromMap(value.data())});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +54,11 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hallo Dista',
-                        style: TextStyle(fontSize: 28, fontWeight: semiBold),
+                        '${loggedInUser.fullname}',
+                        style: TextStyle(fontSize: 20, fontWeight: semiBold),
                       ),
-                      const Text(
-                        '@Dstaa',
+                      Text(
+                        '@${loggedInUser.username}',
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w300),
                       )
@@ -118,7 +140,7 @@ class ProfilePage extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 30),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, SplashPage.routeName);
+                      logout(context);
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.red,
@@ -151,5 +173,11 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => SignInPage()));
   }
 }
