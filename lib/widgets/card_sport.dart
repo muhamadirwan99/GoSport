@@ -2,13 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/pages/detail_page.dart';
+import 'package:go_sport/utils/detail_arguments.dart';
 
 // ignore: must_be_immutable
 class CardSport extends StatelessWidget {
   Map<String, dynamic> field;
   String id = "";
+  String sportName = '';
 
-  CardSport({Key? key, required this.field, required this.id})
+  CardSport(
+      {Key? key,
+      required this.field,
+      required this.id,
+      required this.sportName})
       : super(key: key);
 
   @override
@@ -16,11 +22,12 @@ class CardSport extends StatelessWidget {
     return SingleChildScrollView(
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, DetailPage.routeName, arguments: id);
+          Navigator.pushNamed(context, DetailPage.routeName,
+              arguments: DetailArguments(id, sportName));
         },
         child: Container(
-          margin: const EdgeInsets.only(top: 13),
-          padding: const EdgeInsets.only(bottom: 5),
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.only(bottom: 8),
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [

@@ -6,8 +6,9 @@ import 'package:go_sport/widgets/card_sport.dart';
 class MenuPage extends StatelessWidget {
   static const routeName = '/menuPage';
   final _searchController = TextEditingController();
+  String sportName = '';
 
-  MenuPage({Key? key}) : super(key: key);
+  MenuPage({Key? key, required this.sportName}) : super(key: key);
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -33,44 +34,10 @@ class MenuPage extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 12),
+        padding: const EdgeInsets.only(left: 25, right: 25),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 44,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.25),
-                      blurRadius: 4,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  controller: _searchController,
-                  textAlignVertical: TextAlignVertical.bottom,
-                  decoration: const InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    hintText: 'Search',
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: secondaryColor, width: 2.0),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             Expanded(
               child: StreamBuilder<QuerySnapshot<Object?>>(
                 stream: streamData(),
@@ -81,6 +48,7 @@ class MenuPage extends StatelessWidget {
                       itemCount: field.length,
                       itemBuilder: (context, index) {
                         return CardSport(
+                          sportName: sportName,
                           id: field[index].id,
                           field: (field[index].data() as Map<String, dynamic>),
                         );
@@ -100,7 +68,12 @@ class MenuPage extends StatelessWidget {
   }
 
   Stream<QuerySnapshot<Object?>> streamData() {
-    CollectionReference field = firestore.collection("futsal");
-    return field.snapshots();
+    if (sportName == 'futsal') {
+      return firestore.collection("futsal").snapshots();
+    } else if (sportName == 'basket') {
+      return firestore.collection("basket").snapshots();
+    } else {
+      return firestore.collection("tenis").snapshots();
+    }
   }
 }

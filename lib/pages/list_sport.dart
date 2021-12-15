@@ -57,7 +57,7 @@ class _ListSportPageState extends State<ListSportPage> {
                 child: ListView(
                   children: [
                     futsalItem(),
-                    badmintonItem(),
+                    tenisItem(),
                     basketItem(),
                   ],
                 ),
@@ -72,7 +72,7 @@ class _ListSportPageState extends State<ListSportPage> {
   Widget futsalItem() {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, MenuPage.routeName);
+        Navigator.pushNamed(context, MenuPage.routeName, arguments: 'futsal');
       },
       child: Card(
         margin: const EdgeInsets.only(top: 10),
@@ -100,54 +100,64 @@ class _ListSportPageState extends State<ListSportPage> {
     );
   }
 
-  Widget badmintonItem() {
-    return Card(
-      margin: const EdgeInsets.only(top: 20),
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          InkWell(
-            child: Image.asset(
-              'assets/images/badminton.png',
+  Widget tenisItem() {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, MenuPage.routeName, arguments: 'tenis');
+      },
+      child: Card(
+        margin: const EdgeInsets.only(top: 20),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            InkWell(
+              child: Image.asset(
+                'assets/images/tenis.png',
+              ),
+              onTap: () {},
             ),
-            onTap: () {},
-          ),
-          Text(
-            'Badminton',
-            style:
-                TextStyle(fontWeight: bold, color: Colors.white, fontSize: 36),
-          ),
-        ],
+            Text(
+              'Tennis',
+              style: TextStyle(
+                  fontWeight: bold, color: Colors.white, fontSize: 36),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget basketItem() {
-    return Card(
-      margin: const EdgeInsets.only(top: 20),
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          InkWell(
-            child: Image.asset(
-              'assets/images/basket.png',
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, MenuPage.routeName, arguments: 'basket');
+      },
+      child: Card(
+        margin: const EdgeInsets.only(top: 20),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            InkWell(
+              child: Image.asset(
+                'assets/images/basket.png',
+              ),
+              onTap: () {},
             ),
-            onTap: () {},
-          ),
-          Text(
-            'Basket',
-            style:
-                TextStyle(fontWeight: bold, color: Colors.white, fontSize: 36),
-          ),
-        ],
+            Text(
+              'Basket',
+              style: TextStyle(
+                  fontWeight: bold, color: Colors.white, fontSize: 36),
+            ),
+          ],
+        ),
       ),
     );
   }
