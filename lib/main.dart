@@ -10,6 +10,7 @@ import 'package:go_sport/pages/sign_up_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
 import 'package:go_sport/pages/menu_page.dart';
 import 'package:go_sport/pages/term_page.dart';
+import 'package:go_sport/utils/detail_arguments.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,9 +42,9 @@ class MyApp extends StatelessWidget {
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
         HomePage.routeName: (context) => const HomePage(),
-        MenuPage.routeName: (context) => MenuPage(),
-        DetailPage.routeName: (context) => DetailPage(
-            id: ModalRoute.of(context)?.settings.arguments as String),
+        MenuPage.routeName: (context) => MenuPage(
+            sportName: ModalRoute.of(context)?.settings.arguments as String),
+        DetailPage.routeName: (context) => DetailPage(),
         EditProfilePage.routeName: (context) => const EditProfilePage(),
         PolicyPage.routeName: (context) => const PolicyPage(),
         TermsPage.routeName: (context) => const TermsPage(),

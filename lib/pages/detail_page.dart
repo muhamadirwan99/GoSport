@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/utils/detail_arguments.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class DetailPage extends StatefulWidget {
   static const routeName = '/detailPage';
-  String id = "";
 
-  DetailPage({Key? key, required this.id}) : super(key: key);
+  DetailPage({Key? key}) : super(key: key);
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -27,9 +27,11 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as DetailArguments;
+
     return Scaffold(
       body: FutureBuilder<DocumentSnapshot<Object?>>(
-        future: getData(widget.id),
+        future: getData(args.id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             var fieldDetail = snapshot.data!.data() as Map<String, dynamic>;
@@ -265,7 +267,16 @@ class _DetailPageState extends State<DetailPage> {
   }
 
   Future<DocumentSnapshot<Object?>> getData(String docID) async {
-    DocumentReference docRef = firestore.collection("futsal").doc(docID);
-    return docRef.get();
+    final args = ModalRoute.of(context)!.settings.arguments as DetailArguments;
+    if (args.sportName == 'futsal') {
+      DocumentReference docRef = firestore.collection("futsal").doc(docID);
+      return docRef.get();
+    } else if (args.sportName == 'basket') {
+      DocumentReference docRef = firestore.collection("basket").doc(docID);
+      return docRef.get();
+    } else {
+      DocumentReference docRef = firestore.collection("tenis").doc(docID);
+      return docRef.get();
+    }
   }
 }
