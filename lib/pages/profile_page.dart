@@ -7,6 +7,8 @@ import 'package:go_sport/pages/edit_profile_page.dart';
 import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/term_page.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -127,7 +129,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                   child: menuItem('Edit Profile')),
               menuItem('Your Orders'),
-              menuItem('Help'),
+              GestureDetector(
+                  onTap: () => _launchURL(), child: menuItem('Help')),
               SizedBox(
                 height: defaultMargin,
               ),
@@ -195,5 +198,14 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Stream<User?> streamAuthStatus() {
     return auth.authStateChanges();
+  }
+
+  _launchURL() async {
+    const url = 'https://wa.me/+6289656981087';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
