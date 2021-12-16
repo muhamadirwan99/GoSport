@@ -26,11 +26,13 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(user!.uid)
-        .get()
-        .then((value) => {loggedInUser = UserModel.fromMap(value.data())});
+    setState(() {
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc(user!.uid)
+          .get()
+          .then((value) => {loggedInUser = UserModel.fromMap(value.data())});
+    });
   }
 
   @override
