@@ -1,24 +1,26 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:go_sport/common/navigation.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/pages/detail_page.dart';
-import 'package:go_sport/pages/edit_profile_page.dart';
-import 'package:go_sport/pages/home_page.dart';
+import 'package:go_sport/pages/menu.dart';
 import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/sign_up_page.dart';
+import 'package:go_sport/pages/menu_list_page.dart';
 import 'package:go_sport/pages/splash_page.dart';
-import 'package:go_sport/pages/menu_page.dart';
 import 'package:go_sport/pages/term_page.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final currentUser = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +37,17 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: myTextTheme,
       ),
-      initialRoute: SplashPage.routeName,
+      initialRoute: currentUser == null ? SplashPage.routeName : Menu.routeName,
+      navigatorKey: navigatorKey,
       routes: {
         SplashPage.routeName: (context) => const SplashPage(),
         SignInPage.routeName: (context) => const SignInPage(),
         SignUpPage.routeName: (context) => const SignUpPage(),
-        HomePage.routeName: (context) => const HomePage(),
-        MenuPage.routeName: (context) => MenuPage(
-            sportName: ModalRoute.of(context)?.settings.arguments as String),
+        Menu.routeName: (context) => const Menu(),
+        MenuListPage.routeName: (context) => MenuListPage(
+              sportName: ModalRoute.of(context)?.settings.arguments as String,
+            ),
         DetailPage.routeName: (context) => DetailPage(),
-        EditProfilePage.routeName: (context) => const EditProfilePage(),
         PolicyPage.routeName: (context) => const PolicyPage(),
         TermsPage.routeName: (context) => const TermsPage(),
       },

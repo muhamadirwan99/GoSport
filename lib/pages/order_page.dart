@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/data/model/user_model.dart';
 import 'package:go_sport/widgets/card_booking.dart';
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({Key? key}) : super(key: key);
+  final UserModel userModel;
+  const OrderPage({Key? key, required this.userModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

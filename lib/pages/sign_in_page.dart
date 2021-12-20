@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/services.dart';
 import 'package:go_sport/common/style.dart';
-import 'package:go_sport/pages/home_page.dart';
+import 'package:go_sport/pages/menu.dart';
 import 'package:go_sport/pages/sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
@@ -14,15 +14,13 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  //form key
-  final _formkey = GlobalKey<FormState>();
-
   //editing controller
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   //firebase
   final _auth = FirebaseAuth.instance;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class _SignInPageState extends State<SignInPage> {
         child: Column(
           children: [
             Text(
-              'Login',
+              'Sign In',
               style: TextStyle(fontSize: 40, fontWeight: bold),
             ),
             const SizedBox(
@@ -174,21 +172,23 @@ class _SignInPageState extends State<SignInPage> {
         height: 50,
         width: double.infinity,
         margin: const EdgeInsets.only(top: 69),
-        child: TextButton(
-          onPressed: () {
-            signIn(emailController.text, passwordController.text);
-          },
-          style: TextButton.styleFrom(
-            backgroundColor: secondaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: const Color(0xff09ABAD),
           ),
-          child: Text(
-            'Sign In',
-            style: TextStyle(
-                fontSize: 16, color: Colors.white, fontWeight: medium),
-          ),
+          onPressed: _isLoading ? null : () => signIn(),
+          child: _isLoading
+              ? const SizedBox(
+                  height: 20.0,
+                  width: 20.0,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                )
+              : const Text(
+                  'Sign in',
+                  style: TextStyle(fontSize: 18),
+                ),
         ),
       );
     }
@@ -216,23 +216,28 @@ class _SignInPageState extends State<SignInPage> {
       );
     }
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-          ),
-          child: Form(
-            key: _formkey,
-            child: Column(
-              children: [
-                header(),
-                emailInput(),
-                passwordInput(),
-                signInButton(),
-                footer(),
-              ],
+    return WillPopScope(
+      onWillPop: () {
+        SystemNavigator.pop();
+        return Future.value(false);
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+            ),
+            child: Form(
+              child: Column(
+                children: [
+                  header(),
+                  emailInput(),
+                  passwordInput(),
+                  signInButton(),
+                  footer(),
+                ],
+              ),
             ),
           ),
         ),
@@ -241,17 +246,22 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   // login function
-  void signIn(String email, String password) async {
-    if (_formkey.currentState!.validate()) {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successfull"),
-                Navigator.pushNamedAndRemoveUntil(
-                    context, HomePage.routeName, (route) => false),
-              })
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
+  void signIn() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      final email = emailController.text;
+      final password = passwordController.text;
+
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Navigator.pushReplacementNamed(context, Menu.routeName);
+    } catch (e) {
+      final snackbar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    } finally {
+      setState(() {
+        _isLoading = false;
       });
     }
   }

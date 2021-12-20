@@ -1,213 +1,231 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_sport/common/navigation.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/user_model.dart';
-import 'package:go_sport/pages/edit_profile_page.dart';
-import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/term_page.dart';
-import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+import 'pp_page.dart';
 
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
+class ProfilePage extends StatelessWidget {
+  final UserModel userModel;
 
-class _ProfilePageState extends State<ProfilePage> {
-  User? user = FirebaseAuth.instance.currentUser;
-  FirebaseAuth auth = FirebaseAuth.instance;
-
-  UserModel loggedInUser = UserModel();
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      FirebaseFirestore.instance
-          .collection("users")
-          .doc(user!.uid)
-          .get()
-          .then((value) => {loggedInUser = UserModel.fromMap(value.data())});
-    });
-  }
+  const ProfilePage({Key? key, required this.userModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget header() {
-      return StreamBuilder<User?>(
-        stream: streamAuthStatus(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            return AppBar(
-              backgroundColor: Colors.white,
-              automaticallyImplyLeading: false,
-              elevation: 0,
-              flexibleSpace: SafeArea(
-                child: Container(
-                  padding: EdgeInsets.all(defaultMargin),
-                  child: Row(
-                    children: [
-                      ClipOval(
-                        child: Image.asset(
-                          'assets/images/profile.png',
-                          width: 64,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 200.0,
+                  child: Image.asset(
+                    'assets/futsal.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                SafeArea(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 1.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            icon: const Icon(Icons.logout),
+                            color: Colors.redAccent,
+                            onPressed: () {
+                              logout(context);
+                            },
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 15),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${loggedInUser.fullname}',
-                              style:
-                                  TextStyle(fontSize: 20, fontWeight: semiBold),
+                        Image.asset(
+                          'assets/images/profile.png',
+                          width: 180,
+                          height: 180,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.06),
+                    spreadRadius: 5,
+                    blurRadius: 20,
+                    offset: const Offset(2, 2), // changes position of shadow
+                  ),
+                ],
+              ),
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.all(20.0),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 5.0),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'FullName',
+                      style:
+                          TextStyle(fontWeight: semiBold, color: Colors.grey),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(bottom: 15.0),
+                    child: Text(
+                      userModel.fullname.toString(),
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      'Username',
+                      style:
+                          TextStyle(fontWeight: semiBold, color: Colors.grey),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(bottom: 15.0),
+                    child: Text(
+                      userModel.username.toString(),
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(bottom: 5.0),
+                    child: Text(
+                      'Email',
+                      style:
+                          TextStyle(fontWeight: semiBold, color: Colors.grey),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(bottom: 115.0),
+                    child: Text(
+                      userModel.email.toString(),
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigation.intent(PolicyPage.routeName);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Privacy & Policy',
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
                             ),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 15),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigation.intent(TermsPage.routeName);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
                             Text(
-                              '@${loggedInUser.username}',
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w300),
-                            )
+                              'Terms & Conditions',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Icon(
+                              Icons.chevron_right,
+                              color: Colors.black,
+                            ),
                           ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            );
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-      );
-    }
-
-    Widget menuItem(String text) {
-      return Container(
-        margin: const EdgeInsets.only(top: 16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              text,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Colors.black,
+                ],
               ),
             ),
-            const Icon(
-              Icons.chevron_right,
-              color: Colors.black,
-            )
           ],
         ),
-      );
-    }
-
-    Widget content() {
-      return Expanded(
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Account',
-                style: TextStyle(fontWeight: bold, fontSize: 20),
-              ),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, EditProfilePage.routeName);
-                  },
-                  child: menuItem('Edit Profile')),
-              menuItem('Your Orders'),
-              GestureDetector(
-                  onTap: () => _launchURL(), child: menuItem('Help')),
-              SizedBox(
-                height: defaultMargin,
-              ),
-              Text(
-                'General',
-                style: TextStyle(fontWeight: bold, fontSize: 20),
-              ),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, PolicyPage.routeName);
-                  },
-                  child: menuItem('Privacy & Policy')),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, TermsPage.routeName);
-                  },
-                  child: menuItem('Terms & Conditions')),
-              Center(
-                child: Container(
-                  height: 50,
-                  width: 300,
-                  margin: const EdgeInsets.only(top: 30),
-                  child: TextButton(
-                    onPressed: () {
-                      logout(context);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      'Sign Out',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: medium),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      );
-    }
-
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Column(
-        children: [
-          header(),
-          content(),
-        ],
       ),
     );
   }
 
-  Future<void> logout(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const SignInPage()));
-  }
-
-  Stream<User?> streamAuthStatus() {
-    return auth.authStateChanges();
-  }
-
-  _launchURL() async {
-    const url = 'https://wa.me/+6289656981087';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  Future<void> logout(context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          'Are you sure?',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        content: Text(
+          'Do you want Logout?',
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+        actions: [
+          TextButton(
+            child: const Text("CANCEL"),
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            style: TextButton.styleFrom(
+              primary: Colors.blue,
+              backgroundColor: Colors.transparent,
+              textStyle: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),
+          const SizedBox(width: 1),
+          ElevatedButton(
+            child: const Text("LOGOUT"),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigation.intentAndReplace(SignInPage.routeName);
+            },
+            style: TextButton.styleFrom(
+              primary: Colors.white,
+              backgroundColor: Colors.redAccent,
+              textStyle: Theme.of(context).textTheme.subtitle1,
+            ),
+          ),
+          const SizedBox(width: 4),
+        ],
+      ),
+    );
   }
 }

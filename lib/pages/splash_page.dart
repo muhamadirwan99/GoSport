@@ -1,40 +1,20 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
+import 'package:splash_screen_view/SplashScreenView.dart';
 
-class SplashPage extends StatefulWidget {
+class SplashPage extends StatelessWidget {
+  static const routeName = '/SplashPage';
   const SplashPage({Key? key}) : super(key: key);
-  static const routeName = '/';
-
-  @override
-  State<SplashPage> createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamed(context, SignInPage.routeName),
-    );
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          width: 242,
-          height: 242,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/splash.png'),
-            ),
-          ),
-        ),
-      ),
-    );
+        body: SplashScreenView(
+      navigateRoute: const SignInPage(),
+      duration: 4000,
+      imageSize: 400,
+      imageSrc: "assets/images/splash.png",
+      backgroundColor: Colors.white,
+    ));
   }
 }

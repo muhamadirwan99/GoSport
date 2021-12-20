@@ -1,79 +1,179 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_sport/common/navigation.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/user_model.dart';
-import 'package:go_sport/pages/favorite_page.dart';
-import 'package:go_sport/pages/list_sport.dart';
-import 'package:go_sport/pages/order_page.dart';
-import 'package:go_sport/pages/profile_page.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
-var indexBottomNav = 0;
-List<Widget> widgetOptions = [
-  const ListSportPage(),
-  const OrderPage(),
-  const FavoritePage(),
-  const ProfilePage()
-];
+import 'package:go_sport/pages/menu_list_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-  static const routeName = '/homePage';
+  final UserModel userModel;
+
+  const HomePage({Key? key, required this.userModel}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedInUser = UserModel();
-
-  @override
-  void initState() {
-    super.initState();
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(user!.uid)
-        .get()
-        .then((value) => {loggedInUser = UserModel.fromMap(value.data())});
-  }
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widgetOptions.elementAt(indexBottomNav),
-      bottomNavigationBar: SalomonBottomBar(
-        onTap: (index) {
-          setState(
-            () {
-              indexBottomNav = index;
-            },
-          );
-        },
-        currentIndex: indexBottomNav,
-        items: [
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.home),
-            title: const Text('Home'),
-            selectedColor: bottomNav,
+      body: StreamBuilder<QuerySnapshot>(
+          // stream: null,
+          builder: (context, snapshot) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(22.0),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 0,
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'GoSport',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Please order below',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      futsalItem(),
+                      tenisItem(),
+                      basketItem(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.list_rounded),
-            title: const Text('Order'),
-            selectedColor: bottomNav,
-          ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.favorite_border_rounded),
-            title: const Text('Favorite'),
-            selectedColor: bottomNav,
-          ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.account_circle_rounded),
-            title: const Text('Profile'),
-            selectedColor: bottomNav,
-          ),
-        ],
+        );
+      }),
+    );
+  }
+
+  Widget futsalItem() {
+    return InkWell(
+      onTap: () {
+        Navigation.intentWithData(MenuListPage.routeName, 'futsal');
+      },
+      child: Card(
+        margin: const EdgeInsets.only(top: 10),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            InkWell(
+              child: Image.asset(
+                'assets/images/futsal.png',
+              ),
+              onTap: () {
+                Navigation.intentWithData(MenuListPage.routeName, 'futsal');
+              },
+            ),
+            Text(
+              'Futsal',
+              style: TextStyle(
+                  fontWeight: bold, color: Colors.white, fontSize: 36),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget tenisItem() {
+    return InkWell(
+      onTap: () {
+        Navigation.intentWithData(MenuListPage.routeName, 'tennis');
+      },
+      child: Card(
+        margin: const EdgeInsets.only(top: 20),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            InkWell(
+              child: Image.asset(
+                'assets/images/tenis.png',
+              ),
+              onTap: () {
+                Navigation.intentWithData(MenuListPage.routeName, 'tennis');
+              },
+            ),
+            Text(
+              'Tennis',
+              style: TextStyle(
+                  fontWeight: bold, color: Colors.white, fontSize: 36),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget basketItem() {
+    return InkWell(
+      onTap: () {
+        Navigation.intentWithData(MenuListPage.routeName, "basket");
+      },
+      child: Card(
+        margin: const EdgeInsets.only(top: 20),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            InkWell(
+              child: Image.asset(
+                'assets/images/basket.png',
+              ),
+              onTap: () {
+                Navigation.intentWithData(MenuListPage.routeName, "basket");
+              },
+            ),
+            Text(
+              'Basket',
+              style: TextStyle(
+                  fontWeight: bold, color: Colors.white, fontSize: 36),
+            ),
+          ],
+        ),
       ),
     );
   }
