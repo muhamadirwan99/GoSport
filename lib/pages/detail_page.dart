@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_sport/common/style.dart';
+import 'package:go_sport/data/model/transactions_model.dart';
+import 'package:go_sport/data/model/user_model.dart';
 import 'package:go_sport/utils/detail_arguments.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +21,14 @@ class _DetailPageState extends State<DetailPage> {
   DateTime selectDate = DateTime.now();
   String dateFormat = "";
 
+  UserModel userModel = UserModel();
+  TransactionsModel transactionsModel = TransactionsModel();
+
+  final currentUser = FirebaseAuth.instance.currentUser;
+
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  CollectionReference transactions =
+      FirebaseFirestore.instance.collection('transactions');
 
   @override
   void initState() {
@@ -230,13 +240,18 @@ class _DetailPageState extends State<DetailPage> {
                                 initialDate: selectDate,
                                 firstDate: selectDate,
                                 lastDate: DateTime(2100),
-                              ).then((value) {
-                                if (value != null) {
-                                  setState(() {
-                                    selectDate = value;
-                                  });
-                                }
-                              });
+                              ).then(
+                                (value) {
+                                  if (value != null) {
+                                    setState(
+                                      () {
+                                        selectDate = value;
+                                        addTransc();
+                                      },
+                                    );
+                                  }
+                                },
+                              );
                             },
                             child: Text(
                               'Book Now',
@@ -279,4 +294,41 @@ class _DetailPageState extends State<DetailPage> {
       return docRef.get();
     }
   }
+
+  Future<void> addTransc() async {
+    TransactionsModel transactionsModel = TransactionsModel();
+    final currentUser = FirebaseAuth.instance.currentUser;
+
+    transactionsModel.username = userModel.username;
+
+    if (currentUser != null) {
+      await firestore
+          .collection('transactions')
+          .doc()
+          .set(transactionsModel.toMap());
+      const snackbar = SnackBar(content: Text("Transactions Successfully"));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      Navigator.pop(context);
+    }
+  }
 }
+
+// postDetailsToFirestore() async {
+//     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+//     User? user = _auth.currentUser;
+
+//     UserModel userModel = UserModel();
+//     userModel.email = user!.email;
+//     userModel.uid = user.uid;
+//     userModel.fullname = fullnameEditingController.text;
+//     userModel.username = usernameEditingController.text.toLowerCase();
+
+//     await firebaseFirestore
+//         .collection("users")
+//         .doc(user.uid)
+//         .set(userModel.toMap());
+
+//     const snackbar = SnackBar(content: Text("Resgister Successfully"));
+//     ScaffoldMessenger.of(context).showSnackBar(snackbar);
+//     Navigator.pop(context);
+//   }

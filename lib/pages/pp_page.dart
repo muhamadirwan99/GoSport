@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_sport/common/navigation.dart';
 import 'package:go_sport/common/style.dart';
 
 class PolicyPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class PolicyPage extends StatelessWidget {
             size: 30,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigation.back();
           },
         ),
         centerTitle: true,

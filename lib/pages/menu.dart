@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_sport/data/model/transactions_model.dart';
 import 'package:go_sport/data/model/user_model.dart';
 import 'package:go_sport/pages/favorite_page.dart';
 import 'package:go_sport/pages/home_page.dart';
@@ -21,6 +22,7 @@ class _MenuState extends State<Menu> {
   User? user = FirebaseAuth.instance.currentUser;
 
   UserModel userModel = UserModel();
+  TransactionsModel transactionsModel = TransactionsModel();
 
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
@@ -121,7 +123,7 @@ class _MenuState extends State<Menu> {
     return [
       HomePage(userModel: userModel),
       OrderPage(userModel: userModel),
-      FavoritePage(userModel: userModel),
+      // FavoritePage(userModel: userModel),
       ProfilePage(userModel: userModel),
     ];
   }
@@ -140,12 +142,12 @@ class _MenuState extends State<Menu> {
         activeColorPrimary: Colors.blue,
         inactiveColorPrimary: Colors.grey,
       ),
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.favorite),
-        title: "Favorite",
-        activeColorPrimary: Colors.pinkAccent,
-        inactiveColorPrimary: Colors.grey,
-      ),
+      // PersistentBottomNavBarItem(
+      //   icon: const Icon(Icons.favorite),
+      //   title: "Favorite",
+      //   activeColorPrimary: Colors.pinkAccent,
+      //   inactiveColorPrimary: Colors.grey,
+      // ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.account_circle_rounded),
         title: "Profile",
