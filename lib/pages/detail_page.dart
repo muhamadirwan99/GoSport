@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/transactions_model.dart';
 import 'package:go_sport/data/model/user_model.dart';
@@ -235,21 +236,15 @@ class _DetailPageState extends State<DetailPage> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              showDatePicker(
-                                context: context,
-                                initialDate: selectDate,
-                                firstDate: selectDate,
-                                lastDate: DateTime(2100),
-                              ).then(
-                                (value) {
-                                  if (value != null) {
-                                    setState(
-                                      () {
-                                        selectDate = value;
-                                        addTransc();
-                                      },
-                                    );
-                                  }
+                              DatePicker.showDateTimePicker(
+                                context,
+                                showTitleActions: true,
+                                minTime: selectDate,
+                                onConfirm: (date) {
+                                  setState(() {
+                                    selectDate = date;
+                                    addTransc();
+                                  });
                                 },
                               );
                             },

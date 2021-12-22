@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_sport/data/model/transactions_model.dart';
 import 'package:go_sport/data/model/user_model.dart';
-import 'package:go_sport/pages/favorite_page.dart';
 import 'package:go_sport/pages/home_page.dart';
 import 'package:go_sport/pages/order_page.dart';
 import 'package:go_sport/pages/profile_page.dart';
