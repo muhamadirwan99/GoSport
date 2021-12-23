@@ -25,7 +25,7 @@ class _DetailPageState extends State<DetailPage> {
   UserModel userModel = UserModel();
   TransactionsModel transactionsModel = TransactionsModel();
 
-  final currentUser = FirebaseAuth.instance.currentUser;
+  // final currentUser = FirebaseAuth.instance.currentUser;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   CollectionReference transactions =
@@ -295,6 +295,9 @@ class _DetailPageState extends State<DetailPage> {
     final currentUser = FirebaseAuth.instance.currentUser;
 
     transactionsModel.username = userModel.username;
+    userModel.uid;
+    userModel.username;
+    selectDate.day.toString();
 
     if (currentUser != null) {
       await firestore
