@@ -65,7 +65,7 @@ class ProfilePage extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.06),
                     spreadRadius: 5,
                     blurRadius: 20,
-                    offset: const Offset(2, 2), // changes position of shadow
+                    offset: const Offset(2, 2),
                   ),
                 ],
               ),
