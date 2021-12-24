@@ -5,6 +5,7 @@ import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/user_model.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
 import 'package:go_sport/pages/term_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'pp_page.dart';
 
@@ -25,8 +26,8 @@ class ProfilePage extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 200.0,
-                  child: Image.asset(
-                    'assets/futsal.png',
+                  child: Image.network(
+                    'https://firebasestorage.googleapis.com/v0/b/gosport-134f8.appspot.com/o/assets%2Fbanner2.png?alt=media&token=3577ccd6-5e0d-4635-adfa-a2449ea327b9',
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -37,19 +38,18 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         Container(
                           alignment: Alignment.centerRight,
-                          child: IconButton(
-                            icon: const Icon(Icons.logout),
-                            color: Colors.redAccent,
-                            onPressed: () {
-                              logout(context);
-                            },
+                          child: const SizedBox(
+                            height: 45,
                           ),
                         ),
                         Image.asset(
                           'assets/images/profile.png',
-                          width: 180,
-                          height: 180,
+                          width: 150,
+                          height: 150,
                         ),
+                        const SizedBox(
+                          height: 15,
+                        )
                       ],
                     ),
                   ),
@@ -119,18 +119,19 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    margin: const EdgeInsets.only(bottom: 115.0),
+                    margin: const EdgeInsets.only(bottom: 15.0),
                     child: Text(
                       userModel.email.toString(),
                       style: const TextStyle(fontSize: 15),
                     ),
                   ),
+                  const Divider(color: Colors.black),
                   GestureDetector(
                     onTap: () {
                       Navigation.intent(PolicyPage.routeName);
                     },
                     child: Container(
-                      margin: const EdgeInsets.only(bottom: 30),
+                      margin: const EdgeInsets.only(top: 18, bottom: 18),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
@@ -173,6 +174,18 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
+                    ),
+                  ),
+                  Container(
+                    width: 200,
+                    child: ElevatedButton(
+                      onPressed: () => logout(context),
+                      child: Text(
+                        'LOGOUT',
+                        style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+                      ),
+                      style:
+                          ElevatedButton.styleFrom(primary: Colors.redAccent),
                     ),
                   ),
                 ],

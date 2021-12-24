@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_sport/common/navigation.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/pages/detail_page.dart';
+import 'package:go_sport/pages/invoice_page.dart';
 import 'package:go_sport/pages/menu.dart';
 import 'package:go_sport/pages/pp_page.dart';
 import 'package:go_sport/pages/sign_in_page.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         DetailPage.routeName: (context) => DetailPage(),
         PolicyPage.routeName: (context) => const PolicyPage(),
         TermsPage.routeName: (context) => const TermsPage(),
+        Invoice.routeName: (context) => Invoice(),
       },
     );
   }

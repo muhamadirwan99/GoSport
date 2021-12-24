@@ -5,6 +5,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:go_sport/common/style.dart';
 import 'package:go_sport/data/model/transactions_model.dart';
 import 'package:go_sport/data/model/user_model.dart';
+import 'package:go_sport/pages/menu.dart';
 import 'package:go_sport/utils/detail_arguments.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -243,7 +244,14 @@ class _DetailPageState extends State<DetailPage> {
                                 onConfirm: (date) {
                                   setState(() {
                                     selectDate = date;
-                                    addTransc();
+                                    //addTransc();
+                                    const snackbar = SnackBar(
+                                        content:
+                                            Text("Transactions Successfully"));
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackbar);
+                                    Navigator.pushReplacementNamed(
+                                        context, Menu.routeName);
                                   });
                                 },
                               );

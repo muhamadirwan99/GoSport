@@ -27,15 +27,16 @@ class CardBooking extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-              child: Image.asset('assets/futsal.png'),
-            ),
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16)),
+                child: Image.network(
+                    'https://firebasestorage.googleapis.com/v0/b/gosport-134f8.appspot.com/o/futsal_images%2Fdouble_futsal.png?alt=media&token=7f24b1ee-6449-4a89-8678-2da77edbf13c')),
             Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 15, top: 8),
               child: Text(
-                'Jaya Futsal',
+                'Double Futsal',
                 style: myTextTheme.headline6,
               ),
             ),
@@ -48,7 +49,7 @@ class CardBooking extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const Icon(Icons.place, size: 12),
-                      Text('Cicurug, Sukabumi', style: myTextTheme.subtitle2),
+                      Text('Lemahabang, Cirebon', style: myTextTheme.subtitle2),
                     ],
                   ),
                   Row(
@@ -62,7 +63,7 @@ class CardBooking extends StatelessWidget {
                       const SizedBox(
                         width: 5,
                       ),
-                      Text('4.5'.toString(),
+                      Text('4'.toString(),
                           style: const TextStyle(
                             fontSize: 13,
                           )),
