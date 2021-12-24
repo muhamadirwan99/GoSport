@@ -32,10 +32,13 @@ google_fonts: ^2.1.0
 firebase_core: ^1.10.5
 firebase_auth: ^3.3.3
 cloud_firestore: ^3.1.4
-fluttertoast: ^8.0.8
 intl: ^0.17.0
-salomon_bottom_bar: ^3.1.0
-url_launcher: ^6.0.17
+provider: ^6.0.1
+persistent_bottom_nav_bar: ^4.0.2
+connectivity_plus: ^2.1.0
+splash_screen_view: ^3.0.0
+shimmer: ^2.0.0
+flutter_datetime_picker: ^1.5.1
 ```
 
 ## **Credit Link**
@@ -46,6 +49,10 @@ url_launcher: ^6.0.17
 5. [Cloud Firestore](https://pub.dev/packages/cloud_firestore)
 6. [Fluttertoast](https://pub.dev/packages/fluttertoast)
 7. [Intl](https://pub.dev/packages/intl)
-8. [Salomon Bottom Bar](https://pub.dev/packages/salomon_bottom_bar)
-9. [Url Launcher](https://pub.dev/packages/url_launcher)
-10. [Image assets](https://unsplash.com/)
+8. [Provider](https://pub.dev/packages/provider)
+9. [Persistent Bottom Nav_Bar](https://pub.dev/packages/persistent_bottom_nav_bar)
+10. [Connectivity Plus](https://pub.dev/packages/connectivity_plus)
+11. [Splash Screen View](https://pub.dev/packages/splash_screen_view)
+12. [Shimmer](https://pub.dev/packages/shimmer)
+13. [Flutter Datetime Picker](https://pub.dev/packages/flutter_datetime_picker)
+14. [Image assets](https://unsplash.com/)
