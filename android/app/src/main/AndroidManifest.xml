@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.go_sport">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="GoSport"
         android:icon="@mipmap/ic_launcher">
